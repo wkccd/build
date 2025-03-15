@@ -22,9 +22,9 @@ jobs:
 
       - name: 开始编译 Armbian x86 UEFI 固件
         run: |
-          sudo ./compile.sh \
+            ./compile.sh \
             BOARD=x86 \
-            BRANCH=edge \
+            BRANCH=current \
             RELEASE=bookworm \
             BUILD_MINIMAL=no \
             BUILD_DESKTOP=no \
