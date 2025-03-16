@@ -1,10 +1,7 @@
 name: test
 on:
   workflow_dispatch: 
-  push:
-    paths-ignore:
-      - 'README.md'
-      - 'LICENSE'
+
 
 jobs:
   build:
@@ -23,16 +20,13 @@ jobs:
           sudo apt install -y python3 python3-pip
           sudo apt install -y gcc make flex bison bc libssl-dev
 
-      - name: 开始编译 Armbian x86 UEFI 固件
-        run: |
-            ./compile.sh EXPERT="yes"
-      
       - name: Debug Session
-        if: failure() && github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch'
         uses: mxschmitt/action-tmate@v3
         with:
           timeout-minutes: 60
           limit-access-to-actor: true
+      
 
       - name: 上传编译好的固件
         uses: actions/upload-artifact@v4
