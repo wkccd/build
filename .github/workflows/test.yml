@@ -33,8 +33,7 @@ jobs:
             BUILD_DESKTOP=no \
             KERNEL_CONFIGURE=yes \     
             INSTALL_DOCKER=yes \        
-            DOCKER_STORAGE_DRIVER=overlay2 \
-            EXTRA_IMAGE_NAME="-docker"
+            DOCKER_STORAGE_DRIVER=overlay2
 
       - name: 上传编译好的固件
         uses: actions/upload-artifact@v4
