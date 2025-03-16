@@ -29,10 +29,7 @@ jobs:
             BOARD=uefi-x86 \
             BRANCH=current \
             RELEASE=bookworm \
-            KERNEL_CONFIGURE=yes \
-            BUILD_MINIMAL=no \
-            KERNEL_USE_CGROUPS=yes \
-            KERNEL_OVERLAY_FS=yes
+            INSTALL_DOCKER=yes
 
       - name: 上传编译好的固件
         uses: actions/upload-artifact@v4
