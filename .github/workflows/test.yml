@@ -29,6 +29,7 @@ jobs:
             BOARD=uefi-x86 \
             BRANCH=current \
             RELEASE=bookworm \
+            KERNEL_CONFIGURE=no \
             INSTALL_DOCKER=yes
 
       - name: 上传编译好的固件
