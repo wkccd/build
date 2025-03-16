@@ -29,10 +29,10 @@ jobs:
             BOARD=uefi-x86 \
             BRANCH=current \
             RELEASE=bookworm \
-            KERNEL_CONFIGURE=yes \       # 允许自定义内核配置
-            BUILD_MINIMAL=no \          # 关闭最小化构建（保留必要依赖）
-            KERNEL_USE_CGROUPS=yes \    # 启用 cgroups 支持
-            KERNEL_OVERLAY_FS=yes       # 启用 OverlayFS 存储驱动
+            KERNEL_CONFIGURE=yes \
+            BUILD_MINIMAL=no \
+            KERNEL_USE_CGROUPS=yes \
+            KERNEL_OVERLAY_FS=yes
 
       - name: 上传编译好的固件
         uses: actions/upload-artifact@v4
