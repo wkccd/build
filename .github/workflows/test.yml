@@ -36,12 +36,12 @@ jobs:
       
       - name: 压缩固件
         run: |
-          xz -T0 -1 output/images/Armbian-unofficial_25.2.1_Uefi-x86_bookworm_current_6.12.15_minimal.img
+           gzip output/images/Armbian-unofficial_25.2.1_Uefi-x86_bookworm_current_6.12.15_minimal.img
 
       - name: 上传到release
         uses: softprops/action-gh-release@v2.2.1
         with:
           tag_name: "Armbian-x86_64-uefi"
           files: |
-            output/images/*.img.xz
+            output/images/*.img.gz
           token: ${{ secrets.GITHUB_TOKEN }}
