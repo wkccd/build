@@ -33,9 +33,15 @@ jobs:
             BUILD_MINIMAL=yes \
             BUILD_DESKTOP=no \
             INSTALL_DOCKER=yes
+      
+      - name: 压缩固件
+        run: |
+          xz output/images/*.img
 
-      - name: 上传编译好的固件
-        uses: actions/upload-artifact@v4
+      - name: 上传到release
+        uses: softprops/action-gh-release@v2.2.1
         with:
-          name: armbian-x86-uefi
-          path: output/images/*.img
+          tag_name: "Armbian-x86_64-uefi"
+          files: |
+            output/images/*.img.xz
+          token: ${{ secrets.GITHUB_TOKEN }}
