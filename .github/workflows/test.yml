@@ -8,12 +8,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: 检查出 Armbian 源码
         uses: actions/checkout@v4
         with:
-          repository: armbian/build  # 官方 Armbian 源码仓库
+          repository: armbian/build  
           ref: v25.02
 
       - name: 安装依赖
@@ -21,7 +21,7 @@ jobs:
           sudo apt update
           sudo apt install -y git curl jq xz-utils rsync
           sudo apt install -y python3 python3-pip
-          sudo apt install -y gcc make flex bison bc libssl-dev
+          sudo apt install -y gcc make flex bison bc libssl-dev docker.io
 
       - name: 开始编译 Armbian x86 UEFI 固件
         run: |
@@ -31,7 +31,10 @@ jobs:
             RELEASE=bookworm \
             BUILD_MINIMAL=yes \
             BUILD_DESKTOP=no \
-            KERNEL_CONFIGURE=no
+            KERNEL_CONFIGURE=yes \      # 允许内核配置调整以支持容器特性
+            INSTALL_DOCKER=yes \        # 核心参数：启用 Docker 集成 
+            DOCKER_STORAGE_DRIVER=overlay2 \  # 指定 Docker 存储驱动
+            EXTRA_IMAGE_NAME="-docker"  # 在输出镜像名称中标记 Docker 版本
 
       - name: 上传编译好的固件
         uses: actions/upload-artifact@v4
