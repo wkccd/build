@@ -23,7 +23,7 @@ jobs:
       - name: 开始编译 Armbian x86 UEFI 固件
         run: |
             ./compile.sh \
-            BOARD=rk3568 \
+            BOARD=bananapi-r2-pro \
             BRANCH=current \
             RELEASE=bookworm \
             BUILD_MINIMAL=no \
