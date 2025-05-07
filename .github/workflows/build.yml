@@ -23,7 +23,7 @@ jobs:
       - name: 开始编译 Armbian x86 UEFI 固件
         run: |
             ./compile.sh \
-            BOARD=uefi-x86 \
+            BOARD=rk3568-roceos-k40pro \
             BRANCH=current \
             RELEASE=bookworm \
             BUILD_MINIMAL=no \
